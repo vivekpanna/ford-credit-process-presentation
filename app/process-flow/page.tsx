@@ -27,6 +27,155 @@ export default function ProcessFlowPage() {
   const [isAnimating, setIsAnimating] = useState(false)
   const [currentAnimationStep, setCurrentAnimationStep] = useState(0)
 
+  const SimplifiedWorkflow = () => {
+    return (
+      <Card className="mb-8">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <GitBranch className="h-5 w-5" />
+            Simplified Credit Process Workflow
+          </CardTitle>
+          <p className="text-muted-foreground">
+            High-level overview of the credit decision process from application to final outcome
+          </p>
+        </CardHeader>
+        <CardContent>
+          <div className="relative">
+            {/* Main workflow container */}
+            <div className="flex flex-col lg:flex-row items-center justify-between gap-8 p-6 bg-gradient-to-r from-blue-50 to-emerald-50 rounded-lg">
+              {/* Step 1: Application */}
+              <div className="flex flex-col items-center text-center min-w-[140px]">
+                <div className="w-16 h-16 bg-blue-500 text-white rounded-full flex items-center justify-center mb-3 shadow-lg">
+                  <Building2 className="h-8 w-8" />
+                </div>
+                <h3 className="font-semibold text-sm mb-1">Application</h3>
+                <p className="text-xs text-muted-foreground mb-2">Dealer submits via ESMO</p>
+                <Badge variant="secondary" className="text-xs">
+                  Start
+                </Badge>
+              </div>
+
+              <ArrowRight className="h-6 w-6 text-muted-foreground hidden lg:block" />
+              <ArrowDown className="h-6 w-6 text-muted-foreground lg:hidden" />
+
+              {/* Step 2: Validation */}
+              <div className="flex flex-col items-center text-center min-w-[140px]">
+                <div className="w-16 h-16 bg-green-500 text-white rounded-full flex items-center justify-center mb-3 shadow-lg">
+                  <FileText className="h-8 w-8" />
+                </div>
+                <h3 className="font-semibold text-sm mb-1">Validation</h3>
+                <p className="text-xs text-muted-foreground mb-2">LPS checks & enriches data</p>
+                <Badge variant="secondary" className="text-xs">
+                  1-2 sec
+                </Badge>
+              </div>
+
+              <ArrowRight className="h-6 w-6 text-muted-foreground hidden lg:block" />
+              <ArrowDown className="h-6 w-6 text-muted-foreground lg:hidden" />
+
+              {/* Step 3: Credit Check */}
+              <div className="flex flex-col items-center text-center min-w-[140px]">
+                <div className="w-16 h-16 bg-purple-500 text-white rounded-full flex items-center justify-center mb-3 shadow-lg">
+                  <Database className="h-8 w-8" />
+                </div>
+                <h3 className="font-semibold text-sm mb-1">Credit Check</h3>
+                <p className="text-xs text-muted-foreground mb-2">PCO queries bureaus</p>
+                <Badge variant="secondary" className="text-xs">
+                  2-5 sec
+                </Badge>
+              </div>
+
+              <ArrowRight className="h-6 w-6 text-muted-foreground hidden lg:block" />
+              <ArrowDown className="h-6 w-6 text-muted-foreground lg:hidden" />
+
+              {/* Step 4: Risk Assessment */}
+              <div className="flex flex-col items-center text-center min-w-[140px]">
+                <div className="w-16 h-16 bg-orange-500 text-white rounded-full flex items-center justify-center mb-3 shadow-lg">
+                  <Shield className="h-8 w-8" />
+                </div>
+                <h3 className="font-semibold text-sm mb-1">Risk Assessment</h3>
+                <p className="text-xs text-muted-foreground mb-2">SDS evaluates & scores</p>
+                <Badge variant="secondary" className="text-xs">
+                  1 sec
+                </Badge>
+              </div>
+
+              <ArrowRight className="h-6 w-6 text-muted-foreground hidden lg:block" />
+              <ArrowDown className="h-6 w-6 text-muted-foreground lg:hidden" />
+
+              {/* Step 5: Decision */}
+              <div className="flex flex-col items-center text-center min-w-[140px]">
+                <div className="w-16 h-16 bg-emerald-500 text-white rounded-full flex items-center justify-center mb-3 shadow-lg">
+                  <Target className="h-8 w-8" />
+                </div>
+                <h3 className="font-semibold text-sm mb-1">Decision</h3>
+                <p className="text-xs text-muted-foreground mb-2">Final outcome</p>
+                <Badge variant="secondary" className="text-xs">
+                  End
+                </Badge>
+              </div>
+            </div>
+
+            {/* Decision outcomes */}
+            <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="flex items-center gap-3 p-4 bg-green-50 border border-green-200 rounded-lg">
+                <CheckCircle className="h-8 w-8 text-green-600 flex-shrink-0" />
+                <div>
+                  <h4 className="font-semibold text-green-800">Approved</h4>
+                  <p className="text-sm text-green-700">60-70% of cases</p>
+                  <p className="text-xs text-green-600">Automatic processing</p>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-3 p-4 bg-amber-50 border border-amber-200 rounded-lg">
+                <Users className="h-8 w-8 text-amber-600 flex-shrink-0" />
+                <div>
+                  <h4 className="font-semibold text-amber-800">Manual Review</h4>
+                  <p className="text-sm text-amber-700">20-25% of cases</p>
+                  <p className="text-xs text-amber-600">Human assessment</p>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-3 p-4 bg-red-50 border border-red-200 rounded-lg">
+                <AlertTriangle className="h-8 w-8 text-red-600 flex-shrink-0" />
+                <div>
+                  <h4 className="font-semibold text-red-800">Declined</h4>
+                  <p className="text-sm text-red-700">10-15% of cases</p>
+                  <p className="text-xs text-red-600">Policy violation</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Key systems involved */}
+            <div className="mt-8 p-4 bg-slate-50 rounded-lg">
+              <h4 className="font-semibold mb-3 text-center">Key Systems Involved</h4>
+              <div className="flex flex-wrap justify-center gap-3">
+                <Badge variant="outline" className="bg-blue-100 text-blue-800">
+                  ESMO (Dealer System)
+                </Badge>
+                <Badge variant="outline" className="bg-green-100 text-green-800">
+                  LPS (Processing)
+                </Badge>
+                <Badge variant="outline" className="bg-purple-100 text-purple-800">
+                  PCO (Credit Bureau)
+                </Badge>
+                <Badge variant="outline" className="bg-orange-100 text-orange-800">
+                  SDS (Decision Engine)
+                </Badge>
+                <Badge variant="outline" className="bg-teal-100 text-teal-800">
+                  Schufa (Personal Credit)
+                </Badge>
+                <Badge variant="outline" className="bg-amber-100 text-amber-800">
+                  Creditreform (Commercial)
+                </Badge>
+              </div>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+    )
+  }
+
   const processSteps = [
     {
       id: 1,
@@ -181,6 +330,8 @@ export default function ProcessFlowPage() {
             final decision. Explore each step, understand system interactions, and see how decisions are made.
           </p>
         </div>
+
+        <SimplifiedWorkflow />
 
         <Tabs defaultValue="flow" className="space-y-8">
           <TabsList className="grid w-full grid-cols-4">
