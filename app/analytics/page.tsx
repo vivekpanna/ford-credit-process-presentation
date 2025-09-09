@@ -191,6 +191,169 @@ export default function AnalyticsPage() {
               </CardHeader>
               <CardContent>
                 <div className="space-y-6">
+                  <div className="bg-gradient-to-br from-slate-50 to-blue-50 p-6 rounded-lg border">
+                    {/* External Systems Layer */}
+                    <div className="mb-6">
+                      <h4 className="font-semibold text-slate-700 mb-4 text-center">External Data Sources</h4>
+                      <div className="flex justify-center gap-6 mb-4">
+                        <div className="text-center">
+                          <div className="inline-flex items-center gap-2 p-3 bg-orange-100 rounded-lg border border-orange-200">
+                            <Shield className="h-6 w-6 text-orange-600" />
+                            <div>
+                              <h5 className="font-medium text-orange-900">Schufa</h5>
+                              <p className="text-xs text-orange-700">Credit Bureau</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="text-center">
+                          <div className="inline-flex items-center gap-2 p-3 bg-teal-100 rounded-lg border border-teal-200">
+                            <Building2 className="h-6 w-6 text-teal-600" />
+                            <div>
+                              <h5 className="font-medium text-teal-900">Creditreform</h5>
+                              <p className="text-xs text-teal-700">Commercial Bureau</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="flex justify-center">
+                        <div className="w-px h-8 bg-slate-300"></div>
+                      </div>
+                    </div>
+
+                    {/* Processing Layer */}
+                    <div className="mb-6">
+                      <h4 className="font-semibold text-slate-700 mb-4 text-center">Processing Systems</h4>
+                      <div className="flex justify-center gap-6 mb-4">
+                        <div className="text-center">
+                          <div className="inline-flex items-center gap-2 p-3 bg-red-100 rounded-lg border border-red-200">
+                            <FileText className="h-6 w-6 text-red-600" />
+                            <div>
+                              <h5 className="font-medium text-red-900">ESMO</h5>
+                              <p className="text-xs text-red-700">Dealer System</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="text-center">
+                          <div className="inline-flex items-center gap-2 p-4 bg-green-100 rounded-lg border border-green-200 shadow-md">
+                            <Database className="h-8 w-8 text-green-600" />
+                            <div>
+                              <h5 className="font-semibold text-green-900">LPS</h5>
+                              <p className="text-xs text-green-700">Core Processing</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="text-center">
+                          <div className="inline-flex items-center gap-2 p-3 bg-indigo-100 rounded-lg border border-indigo-200">
+                            <TrendingUp className="h-6 w-6 text-indigo-600" />
+                            <div>
+                              <h5 className="font-medium text-indigo-900">PCO</h5>
+                              <p className="text-xs text-indigo-700">Decision Engine</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="flex justify-center">
+                        <div className="w-px h-8 bg-slate-300"></div>
+                      </div>
+                    </div>
+
+                    {/* Storage & Analytics Layer */}
+                    <div className="mb-4">
+                      <h4 className="font-semibold text-slate-700 mb-4 text-center">Data Storage & Analytics</h4>
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div className="text-center">
+                          <div className="inline-flex items-center gap-2 p-3 bg-blue-100 rounded-lg border border-blue-200">
+                            <Building2 className="h-6 w-6 text-blue-600" />
+                            <div>
+                              <h5 className="font-medium text-blue-900">LA</h5>
+                              <p className="text-xs text-blue-700">Contract System</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="text-center">
+                          <div className="inline-flex items-center gap-2 p-3 bg-purple-100 rounded-lg border border-purple-200">
+                            <BarChart3 className="h-6 w-6 text-purple-600" />
+                            <div>
+                              <h5 className="font-medium text-purple-900">MIS/Scope</h5>
+                              <p className="text-xs text-purple-700">Reporting</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="text-center">
+                          <div className="inline-flex items-center gap-2 p-3 bg-amber-100 rounded-lg border border-amber-200">
+                            <Database className="h-6 w-6 text-amber-600" />
+                            <div>
+                              <h5 className="font-medium text-amber-900">EDW</h5>
+                              <p className="text-xs text-amber-700">Data Warehouse</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Data Flow Arrows and Descriptions */}
+                    <div className="space-y-4 mt-6">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="p-3 bg-white rounded-lg border border-slate-200">
+                          <h5 className="font-semibold text-slate-800 mb-2">Real-time Data Flow</h5>
+                          <div className="space-y-2 text-sm text-slate-600">
+                            <div className="flex items-center gap-2">
+                              <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                              <span>ESMO → LPS: Application data</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
+                              <span>LPS ↔ Schufa/Creditreform: Credit checks</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <div className="w-2 h-2 bg-indigo-500 rounded-full"></div>
+                              <span>LPS → PCO: Decision processing</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="p-3 bg-white rounded-lg border border-slate-200">
+                          <h5 className="font-semibold text-slate-800 mb-2">Batch Data Flow</h5>
+                          <div className="space-y-2 text-sm text-slate-600">
+                            <div className="flex items-center gap-2">
+                              <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                              <span>LPS → LA: Contract data (approved)</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
+                              <span>LPS → MIS: Daily reporting data</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <div className="w-2 h-2 bg-amber-500 rounded-full"></div>
+                              <span>LPS → EDW: Historical analytics</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="p-4 bg-slate-100 rounded-lg border border-slate-200">
+                        <h5 className="font-semibold text-slate-800 mb-2">Bidirectional Feedback Loops</h5>
+                        <p className="text-sm text-slate-600">
+                          <strong>LA → LPS:</strong> Contract performance data flows back to LPS for customer exposure
+                          monitoring, payment behavior analysis, and risk model updates. This creates a continuous
+                          feedback loop for improving credit decisions based on actual customer performance.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Data Flow Diagram */}
+            {/* <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Database className="h-5 w-5" />
+                  Data Flow Architecture
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-6">
                   <div className="text-center">
                     <div className="inline-flex items-center gap-4 p-4 bg-green-50 rounded-lg border border-green-200">
                       <FileText className="h-8 w-8 text-green-600" />
@@ -243,7 +406,71 @@ export default function AnalyticsPage() {
                   </div>
                 </div>
               </CardContent>
-            </Card>
+            </Card> */}
+
+            {/* Data Flow Diagram */}
+            {/* <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Database className="h-5 w-5" />
+                  Data Flow Architecture
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-6">
+                  <div className="text-center">
+                    <div className="inline-flex items-center gap-4 p-4 bg-green-50 rounded-lg border border-green-200">
+                      <FileText className="h-8 w-8 text-green-600" />
+                      <div>
+                        <h4 className="font-semibold text-green-900">LPS</h4>
+                        <p className="text-sm text-green-700">Source System</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="flex justify-center">
+                    <div className="w-px h-12 bg-muted"></div>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div className="text-center">
+                      <div className="inline-flex items-center gap-3 p-4 bg-blue-50 rounded-lg border border-blue-200">
+                        <Building2 className="h-6 w-6 text-blue-600" />
+                        <div>
+                          <h5 className="font-medium text-blue-900">LA</h5>
+                          <p className="text-xs text-blue-700">Contracts</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="text-center">
+                      <div className="inline-flex items-center gap-3 p-4 bg-purple-50 rounded-lg border border-purple-200">
+                        <TrendingUp className="h-6 w-6 text-purple-600" />
+                        <div>
+                          <h5 className="font-medium text-purple-900">MIS</h5>
+                          <p className="text-xs text-purple-700">Reporting</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="text-center">
+                      <div className="inline-flex items-center gap-3 p-4 bg-amber-50 rounded-lg border border-amber-200">
+                        <Database className="h-6 w-6 text-amber-600" />
+                        <div>
+                          <h5 className="font-medium text-amber-900">DDW</h5>
+                          <p className="text-xs text-amber-700">Analytics</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="p-4 bg-muted rounded-lg">
+                    <p className="text-sm text-muted-foreground text-center">
+                      <strong>Bidirectional Flow:</strong> LA sends contract data back to LPS for customer exposure
+                      monitoring and risk assessment updates
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card> */}
           </div>
 
           {/* Sidebar */}
