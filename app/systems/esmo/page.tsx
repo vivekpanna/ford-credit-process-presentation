@@ -49,7 +49,7 @@ export default function ESMOPage() {
                   </div>
                   <div className="p-4 bg-green-50 rounded-lg">
                     <h4 className="font-semibold text-green-900 mb-2">User Base</h4>
-                    <p className="text-sm text-green-800">Authorized dealers across UK and Germany operations</p>
+                    <p className="text-sm text-green-900">Authorized dealers across UK and Germany operations</p>
                   </div>
                 </div>
               </CardContent>
@@ -193,7 +193,7 @@ export default function ESMOPage() {
                 <Separator />
                 <div className="flex justify-between items-center">
                   <span className="text-sm text-muted-foreground">Next System</span>
-                  <Badge className="bg-green-100 text-green-800">LPS</Badge>
+                  <Badge className="bg-green-100 text-green-900">LPS</Badge>
                 </div>
                 <Separator />
                 <div className="flex justify-between items-center">

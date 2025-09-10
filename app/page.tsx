@@ -102,10 +102,10 @@ export default function HomePage() {
         <div className="container max-w-6xl mx-auto px-4">
           <div className="text-center space-y-6">
             <div className="flex justify-center gap-4 mb-4">
-              <Badge variant="secondary" className="text-lg px-4 py-2">
+              <Badge variant="secondary" className="text-lg px-4 py-2 text-slate-700">
                 UK
               </Badge>
-              <Badge variant="secondary" className="text-lg px-4 py-2">
+              <Badge variant="secondary" className="text-lg px-4 py-2 text-slate-700">
                 Germany
               </Badge>
             </div>

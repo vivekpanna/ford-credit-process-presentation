@@ -21,11 +21,19 @@ import {
   Users,
   Search,
   Presentation,
+  Lightbulb,
+  HelpCircle,
+  AlertTriangle,
+  UserCheck,
 } from "lucide-react"
 
 const navigationItems = [
   { href: "/", label: "Overview", icon: Home },
   { href: "/presentation", label: "Presentation", icon: Presentation, description: "Interactive Slides" },
+  { href: "/key-pointers", label: "Key Pointers", icon: Lightbulb, description: "Critical Insights" },
+  { href: "/faq", label: "FAQ", icon: HelpCircle, description: "Frequently Asked Questions" },
+  { href: "/key-issues", label: "Key Issues", icon: AlertTriangle, description: "Critical Challenges" },
+  { href: "/vera-role", label: "Vera's Role", icon: UserCheck, description: "System Expert Profile" },
   { href: "/systems/esmo", label: "ESMO", icon: Building2, description: "Dealer System" },
   { href: "/systems/lps", label: "LPS", icon: FileText, description: "Loan Processing System" },
   { href: "/systems/pco", label: "PCO", icon: Target, description: "Power Curve Origination" },
