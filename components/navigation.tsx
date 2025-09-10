@@ -20,10 +20,12 @@ import {
   BarChart3,
   Users,
   Search,
+  Presentation,
 } from "lucide-react"
 
 const navigationItems = [
   { href: "/", label: "Overview", icon: Home },
+  { href: "/presentation", label: "Presentation", icon: Presentation, description: "Interactive Slides" },
   { href: "/systems/esmo", label: "ESMO", icon: Building2, description: "Dealer System" },
   { href: "/systems/lps", label: "LPS", icon: FileText, description: "Loan Processing System" },
   { href: "/systems/pco", label: "PCO", icon: Target, description: "Power Curve Origination" },
