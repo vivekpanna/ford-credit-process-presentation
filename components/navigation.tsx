@@ -6,7 +6,6 @@ import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { Badge } from "@/components/ui/badge"
-import { SearchBar } from "@/components/search-bar"
 import {
   Menu,
   Home,
@@ -77,12 +76,11 @@ const handleDownloadPDF = (pageType: "current" | "all") => {
 export function Navigation() {
   const pathname = usePathname()
   const [isOpen, setIsOpen] = useState(false)
-  const [showMobileSearch, setShowMobileSearch] = useState(false)
 
   const NavDropdown = ({ category, items, label }: { category: string; items: any[]; label: string }) => (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" className="flex items-center gap-1">
+        <Button variant="ghost" className="flex items-center gap-1 h-9">
           {label}
           <ChevronDown className="h-3 w-3" />
         </Button>
@@ -156,10 +154,6 @@ export function Navigation() {
           </Badge>
         </div>
 
-        <div className="hidden lg:flex flex-1 justify-center max-w-md mx-8">
-          <SearchBar />
-        </div>
-
         <nav className="hidden lg:flex items-center space-x-1">
           <Link
             href="/"
@@ -172,6 +166,14 @@ export function Navigation() {
           <NavDropdown category="systems" items={navigationCategories.systems} label="Systems" />
           <NavDropdown category="bureaus" items={navigationCategories.bureaus} label="Bureaus" />
           <NavDropdown category="processes" items={navigationCategories.processes} label="Processes" />
+
+          {pathname !== "/" && (
+            <Button variant="ghost" size="sm" asChild>
+              <Link href="/search">
+                <Search className="h-4 w-4" />
+              </Link>
+            </Button>
+          )}
 
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -196,9 +198,13 @@ export function Navigation() {
         </nav>
 
         <div className="flex items-center gap-2 lg:hidden">
-          <Button variant="ghost" size="icon" onClick={() => setShowMobileSearch(!showMobileSearch)}>
-            <Search className="h-5 w-5" />
-          </Button>
+          {pathname !== "/" && (
+            <Button variant="ghost" size="icon" asChild>
+              <Link href="/search">
+                <Search className="h-5 w-5" />
+              </Link>
+            </Button>
+          )}
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon">
@@ -211,9 +217,6 @@ export function Navigation() {
                   <Users className="h-5 w-5 text-primary-foreground" />
                 </div>
                 <span className="font-bold text-lg">Credit Process Hub</span>
-              </div>
-              <div className="mb-6">
-                <SearchBar />
               </div>
 
               <div className="mb-6 space-y-2">
@@ -244,11 +247,6 @@ export function Navigation() {
           </Sheet>
         </div>
       </div>
-      {showMobileSearch && (
-        <div className="lg:hidden border-t bg-background p-4">
-          <SearchBar />
-        </div>
-      )}
     </header>
   )
 }
