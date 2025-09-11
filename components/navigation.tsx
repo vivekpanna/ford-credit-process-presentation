@@ -27,14 +27,6 @@ import {
   Download,
   ChevronDown,
 } from "lucide-react"
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
 
 const navigationCategories = {
   overview: [
@@ -77,34 +69,67 @@ export function Navigation() {
   const pathname = usePathname()
   const [isOpen, setIsOpen] = useState(false)
 
-  const NavDropdown = ({ category, items, label }: { category: string; items: any[]; label: string }) => (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant="ghost" className="flex items-center gap-1 h-9">
-          {label}
-          <ChevronDown className="h-3 w-3" />
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="start" className="w-56">
-        <DropdownMenuLabel>{label}</DropdownMenuLabel>
-        <DropdownMenuSeparator />
-        {items.map((item) => {
-          const isActive = pathname === item.href
-          const Icon = item.icon
-          return (
-            <DropdownMenuItem key={item.href} asChild>
-              <Link href={item.href} className={`flex items-center gap-2 ${isActive ? "bg-accent" : ""}`}>
+  const NavHoverMenu = ({ category, items, label }: { category: string; items: any[]; label: string }) => (
+    <div className="relative group">
+      <Button variant="ghost" className="flex items-center gap-1 h-9">
+        {label}
+        <ChevronDown className="h-3 w-3" />
+      </Button>
+      <div className="absolute top-full left-0 mt-1 w-56 bg-background border rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+        <div className="p-2">
+          <div className="px-2 py-1.5 text-sm font-semibold text-muted-foreground">{label}</div>
+          <div className="border-t my-1"></div>
+          {items.map((item) => {
+            const isActive = pathname === item.href
+            const Icon = item.icon
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`flex items-center gap-2 px-2 py-2 rounded-sm text-sm hover:bg-accent transition-colors ${
+                  isActive ? "bg-accent" : ""
+                }`}
+              >
                 <Icon className="h-4 w-4" />
                 <div>
                   <div className="font-medium">{item.label}</div>
                   {item.description && <div className="text-xs text-muted-foreground">{item.description}</div>}
                 </div>
               </Link>
-            </DropdownMenuItem>
-          )
-        })}
-      </DropdownMenuContent>
-    </DropdownMenu>
+            )
+          })}
+        </div>
+      </div>
+    </div>
+  )
+
+  const DownloadHoverMenu = () => (
+    <div className="relative group">
+      <Button variant="ghost" size="sm" className="flex items-center gap-1">
+        <Download className="h-4 w-4" />
+        <ChevronDown className="h-3 w-3" />
+      </Button>
+      <div className="absolute top-full right-0 mt-1 w-48 bg-background border rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+        <div className="p-2">
+          <div className="px-2 py-1.5 text-sm font-semibold text-muted-foreground">Download PDF</div>
+          <div className="border-t my-1"></div>
+          <button
+            onClick={() => handleDownloadPDF("current")}
+            className="flex items-center gap-2 px-2 py-2 rounded-sm text-sm hover:bg-accent transition-colors w-full text-left"
+          >
+            <Download className="h-4 w-4" />
+            Current Page
+          </button>
+          <button
+            onClick={() => handleDownloadPDF("all")}
+            className="flex items-center gap-2 px-2 py-2 rounded-sm text-sm hover:bg-accent transition-colors w-full text-left"
+          >
+            <Download className="h-4 w-4" />
+            Complete Guide
+          </button>
+        </div>
+      </div>
+    </div>
   )
 
   const MobileNavItems = () => (
@@ -162,10 +187,10 @@ export function Navigation() {
             <Home className="h-4 w-4 inline mr-2" />
             Overview
           </Link>
-          <NavDropdown category="knowledge" items={navigationCategories.knowledge} label="Knowledge" />
-          <NavDropdown category="systems" items={navigationCategories.systems} label="Systems" />
-          <NavDropdown category="bureaus" items={navigationCategories.bureaus} label="Bureaus" />
-          <NavDropdown category="processes" items={navigationCategories.processes} label="Processes" />
+          <NavHoverMenu category="knowledge" items={navigationCategories.knowledge} label="Knowledge" />
+          <NavHoverMenu category="systems" items={navigationCategories.systems} label="Systems" />
+          <NavHoverMenu category="bureaus" items={navigationCategories.bureaus} label="Bureaus" />
+          <NavHoverMenu category="processes" items={navigationCategories.processes} label="Processes" />
 
           {pathname !== "/" && (
             <Button variant="ghost" size="sm" asChild>
@@ -175,26 +200,7 @@ export function Navigation() {
             </Button>
           )}
 
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="sm" className="flex items-center gap-1">
-                <Download className="h-4 w-4" />
-                <ChevronDown className="h-3 w-3" />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              <DropdownMenuLabel>Download PDF</DropdownMenuLabel>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem onClick={() => handleDownloadPDF("current")}>
-                <Download className="h-4 w-4 mr-2" />
-                Current Page
-              </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => handleDownloadPDF("all")}>
-                <Download className="h-4 w-4 mr-2" />
-                Complete Guide
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
+          <DownloadHoverMenu />
         </nav>
 
         <div className="flex items-center gap-2 lg:hidden">
