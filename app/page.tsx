@@ -2,7 +2,6 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
 import Link from "next/link"
 import { SearchBar } from "@/components/search-bar"
 import {
@@ -16,6 +15,7 @@ import {
   ArrowRight,
   GitBranch,
   BarChart3,
+  Download,
 } from "lucide-react"
 
 const systemCards = [
@@ -94,6 +94,10 @@ const stats = [
   { label: "Data Sources", value: "2 Bureaus", icon: CreditCard },
 ]
 
+const handleDownloadCurrentPage = () => {
+  window.print()
+}
+
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-background">
@@ -101,14 +105,6 @@ export default function HomePage() {
       <section className="bg-gradient-to-b from-primary/5 to-background py-16">
         <div className="container max-w-6xl mx-auto px-4">
           <div className="text-center space-y-6">
-            <div className="flex justify-center gap-4 mb-4">
-              <Badge variant="secondary" className="text-lg px-4 py-2 text-slate-700">
-                UK
-              </Badge>
-              <Badge variant="secondary" className="text-lg px-4 py-2 text-slate-700">
-                Germany
-              </Badge>
-            </div>
             <h1 className="text-4xl md:text-6xl font-bold text-balance">Understanding Credit Processes</h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto text-pretty">
               A comprehensive knowledge transfer for Product Management teams covering credit system architecture, data
@@ -131,6 +127,10 @@ export default function HomePage() {
               </Button>
               <Button variant="outline" size="lg" asChild>
                 <Link href="/systems/esmo">Explore Systems</Link>
+              </Button>
+              <Button variant="secondary" size="lg" onClick={handleDownloadCurrentPage}>
+                <Download className="mr-2 h-4 w-4" />
+                Download PDF
               </Button>
             </div>
           </div>
